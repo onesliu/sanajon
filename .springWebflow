@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webflow-project-description>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.3.2.me201009141935]]></pluginVersion>
+	<configs>
+		<config>
+			<file>src/usermanage-servlet.xml</file>
+			<name><![CDATA[usermanage-servlet]]></name>
+			<beans-config><![CDATA[1:BeansModel|2:sanajon|3:src/applicationContext.xml]]></beans-config>
+		</config>
+	</configs>
+</webflow-project-description>
