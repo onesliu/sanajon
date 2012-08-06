@@ -8,15 +8,7 @@
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<context:component-scan base-package="com.sanajon"/>
-
-	<bean id="handlemapping"
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<map>
-				<entry key="user_query.do" value-ref="userQuery" />
-			</map>
-		</property>
-	</bean>
+	<context:annotation-config/>
 
 	<bean id="userQuery" class="com.sanajon.user.UserQueryController">
 		<property name="formHandler" value="com.sanajon.user.UserQueryForm" />
