@@ -1,4 +1,4 @@
-package com.sanajon.user;
+package com.sanajon.controller;
 
 public class UserQueryForm {
 

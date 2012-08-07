@@ -12,7 +12,7 @@
 		<servlet-class>com.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>configLoader</param-name>
-			<param-value>applicationContext.xml</param-value>
+			<param-value>servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
