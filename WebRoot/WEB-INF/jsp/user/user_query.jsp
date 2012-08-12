@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ include file="/WEB-INF/jsp/tablib.jsp" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,13 +20,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+  <script type="text/javascript" src="/WEB-INF/js/jquery/jquery-1.6.1.min.js" ></script>
+  <script type="text/javascript">
+  function sbmt() {
+  	if ($("#username").val() == "") {
+		$("#queryform").attr("action","/user_query.do?get=all");
+		$("#username").remove();
+	} else {
+		$("#getall").remove();
+	}
+	$("#queryform").submit();
+  }
+  </script>
   </head>
   
   <body>
   	<form action="/user_query.do" method="post">
-  		<input name="username" type="text">
-  		<input name="提交" type="submit">
+  		<input name="username" type="text" id="username">
+  		<input name="提交" type="submit" onClick="sbmt();">
+		<input name="get" type="hidden" value="all" id="getall">
   	</form>
+  	
+  	<table>
+  		<tr>
+  		</tr>
+  	</table>
   </body>
 </html>
