@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.management.relation.Role;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sanajon.dao.UserDao;
 import com.sanajon.domain.Privilege;
 import com.sanajon.domain.User;
 import com.sanajon.domain.UserGroup;
@@ -17,9 +15,6 @@ import com.sanajon.domain.UserGroup;
 @Transactional
 public class UserManageImp implements UserManage {
 
-	@Autowired
-	private UserDao userDao;
-	
 	@Override
 	public boolean addUser(User user) {
 		// TODO Auto-generated method stub
