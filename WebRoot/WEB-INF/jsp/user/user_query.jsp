@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<form action="/user_query.do" method="post">
+  	<form action="/user_query.do" method="get">
   		<input name="username" type="text" id="username">
   		<input name="提交" type="submit" onClick="sbmt();">
 		<input name="get" type="hidden" value="all" id="getall">
@@ -45,9 +45,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<tr>
   			<td>用户名</td>
   		</tr>
-  		<c:forEach items="$(users)" var="user">
+  		<c:forEach items="${users}" var="user">
   		<tr>
-  			<td><c:out value="${user.name}"></c:out></td>
+  			<td><c:out value="${user.name}" /></td>
   		</tr>
   		</c:forEach>
   	</table>

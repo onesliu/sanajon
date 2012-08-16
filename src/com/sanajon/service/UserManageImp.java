@@ -1,5 +1,6 @@
 package com.sanajon.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.relation.Role;
@@ -59,8 +60,14 @@ public class UserManageImp implements UserManage {
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> allUsers = new ArrayList<User>();
+		User user = new User();
+		user.setName("张三");
+		allUsers.add(user);
+		user = new User();
+		user.setName("李四");
+		allUsers.add(user);
+		return allUsers;
 	}
 
 	@Override

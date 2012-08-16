@@ -22,6 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     This is my JSP page. <br>
-    <a href="/WEB-INF/jsp/user/user_query.jsp?get=all">用户查询</a>
+    <a href="user/user_query.do?get=all">用户查询</a>
   </body>
 </html>

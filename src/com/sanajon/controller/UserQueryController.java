@@ -15,13 +15,14 @@ import com.sanajon.service.UserManage;
 
 
 @Controller
-@RequestMapping("/user_query.do")
+@RequestMapping("/user/user_query.do")
 public class UserQueryController {
 
 	@Autowired
 	UserManage userManage;
 	
 	@SuppressWarnings("rawtypes")
+	@RequestMapping
 	public Map getByName(String username, ModelMap model)
 	{
 		User user = userManage.getByName(username);
@@ -30,6 +31,7 @@ public class UserQueryController {
 	}
 
 	@SuppressWarnings("rawtypes")
+	@RequestMapping
 	public Map getById(@RequestParam("userid") int id, ModelMap model)
 	{
 		User user = userManage.getById(id);
