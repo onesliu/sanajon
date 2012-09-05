@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="user">
+<mapper namespace="com.sanajon.dao.UserDao">
 	
-	<resultMap type="user" id="userMap">
+	<resultMap type="com.sanajon.domain.User" id="userMap">
 		<id property="id" column="id" javaType="int" jdbcType="BIGINT" />
-		<result property="username" column="name" />
-		<result property="sex" column="sex" />
+		<result property="name" column="name" />
+		<result property="password" column="password" />
+		<result property="disabled" column="disabled" />
 	</resultMap>
 	
-	<select id="selectAllUser" resultMap="userMap">
+	<insert id="insertUser" parameterType="com.sanajon.domain.User" 
+		useGeneratedKeys="true" keyProperty="id">
+		insert into t_user(name,password,disabled) values(#{name},#{password},#{disabled})
+	</insert>
+	
+	<update id="updateUser" parameterType="com.sanajon.domain.User">
+		update t_user set name=#{name}, passowrd=#{password}, disabled=#{disabled}
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="com.sanajon.domain.User">
+		delete from t_user where id=#{id}
+	</delete>
+
+	<select id="getAllUsers" resultMap="userMap">
 		select * from t_user
 	</select>
 	
-	<insert id="insertUser" parameterType="User" 
-		useGeneratedKeys="true" keyProperty="id">
-		insert into t_user(name,sex) values(#{username}, #{sex})
-	</insert>
+	<select id="getById" resultMap="userMap" parameterType="int">
+		select * from t_user where id=#{id}
+	</select>
+	
+	
 </mapper>

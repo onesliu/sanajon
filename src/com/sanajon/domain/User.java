@@ -5,6 +5,7 @@ public class User {
 	private long id;
 	private String name;
 	private String password;
+	private boolean disabled; 
 	
 	public long getId() {
 		return id;
@@ -23,6 +24,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
+	}
+	public boolean isDisabled() {
+		return disabled;
 	}
 	
 	
