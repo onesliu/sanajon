@@ -22,8 +22,9 @@ public class UserManageImp implements UserManage {
 	
 	@Override
 	public boolean addUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		userDao.insertUser(user);
+		//throw new UnsupportedOperationException();
+		return true;
 	}
 
 	@Override
