@@ -21,13 +21,13 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.oxm-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.test-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.transaction-3.1.2.RELEASE.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web-3.1.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web-3.1.2.RELEASE.jar" sourcepath="E:/JAVA/spring-framework-3.1.2.RELEASE/src/org.springframework.web-sources-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web.portlet-3.1.2.RELEASE.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web.servlet-3.1.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web.servlet-3.1.2.RELEASE.jar" sourcepath="E:/JAVA/spring-framework-3.1.2.RELEASE/src/org.springframework.web.servlet-sources-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web.struts-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.apache.log4j_1.2.15.v201012070815.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mybatis-3.1.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mybatis-3.1.1.jar" sourcepath="E:/JAVA/mybatis-3.1.1/mybatis-3.1.1-sources.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mybatis-spring-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.21-bin.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
