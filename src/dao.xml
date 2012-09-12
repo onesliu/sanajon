@@ -9,8 +9,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
+	<!-- datasource -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
-
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
@@ -18,20 +18,24 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	
+	<!-- mybatis -->
 	<bean id="sqlSessioinFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="configLocation" value="classpath:com/sanajon/data/config.xml" />
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	<!-- mapper bean -->
-	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.sanajon.dao.UserDao" />
-		<property name="sqlSessionFactory" ref="sqlSessioinFactory" />
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sanajon.dao" />
 	</bean>
 
+	<!-- transaction -->	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- business bean -->
 	<context:component-scan base-package="com.sanajon.dao" />
+	<context:component-scan base-package="com.sanajon.service" />
 </beans>

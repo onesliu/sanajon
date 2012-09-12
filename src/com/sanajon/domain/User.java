@@ -28,7 +28,7 @@ public class User {
 	public void setDisabled(boolean disabled) {
 		this.disabled = disabled;
 	}
-	public boolean isDisabled() {
+	public boolean getDisabled() {
 		return disabled;
 	}
 	

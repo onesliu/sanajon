@@ -14,38 +14,46 @@ import com.sanajon.domain.User;
 import com.sanajon.domain.UserGroup;
 
 @Service
-@Transactional
+@Transactional(readOnly=true)
 public class UserManageImp implements UserManage {
 
 	@Autowired
 	private UserDao userDao;
 	
 	@Override
+	@Transactional(rollbackForClassName="Exception")
 	public boolean addUser(User user) {
+		try {
 		userDao.insertUser(user);
-		//throw new UnsupportedOperationException();
-		return true;
+		} catch(Exception e)
+		{}
+		throw new UnsupportedOperationException();
+		//return true;
 	}
 
 	@Override
+	@Transactional
 	public boolean deleteUser(User user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	@Transactional
 	public boolean disableUser(User user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	@Transactional
 	public boolean enableUser(User user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
+	@Transactional
 	public boolean modifyUser(User user) {
 		// TODO Auto-generated method stub
 		return false;

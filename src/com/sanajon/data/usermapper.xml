@@ -3,13 +3,6 @@
 
 <mapper namespace="com.sanajon.dao.UserDao">
 	
-	<parameterMap type="com.sanajon.domain.User" id="userParam">
-		<parameter property="id" javaType="long" jdbcType="BIGINT"/>
-		<parameter property="name"/>
-		<parameter property="password"/>
-		<parameter property="disabled" javaType="boolean" jdbcType="TINYINT,typeHandler=BooleanTypeHandler"/>
-	</parameterMap>
-	
 	<resultMap type="com.sanajon.domain.User" id="userMap">
 		<id property="id" column="id" javaType="long" jdbcType="BIGINT" />
 		<result property="name" column="name" />
@@ -17,17 +10,17 @@
 		<result property="disabled" column="disabled"/>
 	</resultMap>
 	
-	<insert id="insertUser" parameterType="userParam" 
+	<insert id="insertUser" parameterType="com.sanajon.domain.User" 
 		useGeneratedKeys="true" keyProperty="id">
 		insert into t_user(name,password,disabled) values(#{name},#{password},#{disabled})
 	</insert>
 	
-	<update id="updateUser" parameterType="userParam">
+	<update id="updateUser" parameterType="com.sanajon.domain.User">
 		update t_user set name=#{name}, passowrd=#{password}, disabled=#{disabled}
 		where id=#{id}
 	</update>
 	
-	<delete id="deleteUser" parameterType="userParam">
+	<delete id="deleteUser" parameterType="com.sanajon.domain.User">
 		delete from t_user where id=#{id}
 	</delete>
 
