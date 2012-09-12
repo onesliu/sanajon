@@ -21,14 +21,14 @@ public class UserManageImp implements UserManage {
 	private UserDao userDao;
 	
 	@Override
-	@Transactional(rollbackForClassName="Exception")
+	@Transactional
 	public boolean addUser(User user) {
 		try {
 		userDao.insertUser(user);
 		} catch(Exception e)
 		{}
-		throw new UnsupportedOperationException();
-		//return true;
+		//throw new UnsupportedOperationException();
+		return true;
 	}
 
 	@Override

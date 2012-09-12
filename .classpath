@@ -31,5 +31,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mybatis-spring-1.1.1.jar" sourcepath="D:/JAVA/mybatis-spring-1.1.1/mybatis-spring-1.1.1-sources.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.1.21-bin.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aopalliance.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/postgresql-9.1-902.jdbc4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
