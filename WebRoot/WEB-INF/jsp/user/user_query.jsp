@@ -24,10 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript">
   function sbmt() {
   	if ($("#username").val() == "") {
-		$("#queryform").attr("action","/user_query.do?get=all");
-		$("#username").remove();
+		$("#queryform").attr("action","/user/user_query.do?get=all");
 	} else {
-		$("#getall").remove();
 	}
 	$("#queryform").submit();
   }
@@ -35,19 +33,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<form action="/user_query.do" method="get">
+  	<form action="/user/user_query.do" method="get">
   		<input name="username" type="text" id="username">
-  		<input name="提交" type="submit" onClick="sbmt();">
-		<input name="get" type="hidden" value="all" id="getall">
+  		<input id="submit" name="提交" type="submit" onClick="sbmt();">
   	</form>
   	
   	<table>
   		<tr>
   			<td>用户名</td>
   		</tr>
+  		<c:if test="${user!=null}">
+  		<tr>
+  			<td><c:out value="${user.name}" /></td>
+  			<td><c:out value="${user.password}" /></td>
+  		</tr>
+  		</c:if>
   		<c:forEach items="${users}" var="user">
   		<tr>
   			<td><c:out value="${user.name}" /></td>
+  			<td><c:out value="${user.password}" /></td>
   		</tr>
   		</c:forEach>
   	</table>
