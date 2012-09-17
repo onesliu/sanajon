@@ -7,4 +7,3 @@ create table t_user (
 	password varchar(256),
 	disabled boolean default false
 );
-	

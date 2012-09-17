@@ -23,11 +23,7 @@ public class UserManageImp implements UserManage {
 	@Override
 	@Transactional
 	public boolean addUser(User user) {
-		try {
 		userDao.insertUser(user);
-		} catch(Exception e)
-		{}
-		//throw new UnsupportedOperationException();
 		return true;
 	}
 
