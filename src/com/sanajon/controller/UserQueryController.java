@@ -13,13 +13,13 @@ import com.sanajon.service.UserManage;
 
 
 @Controller
-@RequestMapping("/action/user")
+@RequestMapping("/user")
 public class UserQueryController {
 
 	@Autowired
 	UserManage userManage;
 	
-	private final String viewjsp = "/user/user_query.jsp";
+	private final String viewjsp = "user/user_query";
 	
 	@RequestMapping("/name/{username}")
 	public String getByName(@PathVariable String username, Model model)
