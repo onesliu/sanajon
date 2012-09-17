@@ -23,7 +23,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.transaction-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web-3.1.2.RELEASE.jar" sourcepath="E:/JAVA/spring-framework-3.1.2.RELEASE/src/org.springframework.web-sources-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web.portlet-3.1.2.RELEASE.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web.servlet-3.1.2.RELEASE.jar" sourcepath="E:/JAVA/spring-framework-3.1.2.RELEASE/src/org.springframework.web.servlet-sources-3.1.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web.servlet-3.1.2.RELEASE.jar" sourcepath="D:/JAVA/spring-framework-3.1.2.RELEASE/dist/org.springframework.web.servlet-sources-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.springframework.web.struts-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/org.apache.log4j_1.2.15.v201012070815.jar"/>
@@ -33,5 +33,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aopalliance.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/postgresql-9.1-902.jdbc4.jar"/>
+	<classpathentry kind="lib" path="D:/JAVA/spring-test-mvc/target/spring-test-mvc-1.0.0.BUILD-SNAPSHOT.jar" sourcepath="D:/JAVA/spring-test-mvc/target/spring-test-mvc-1.0.0.BUILD-SNAPSHOT-sources.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

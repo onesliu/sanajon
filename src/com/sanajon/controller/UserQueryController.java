@@ -1,50 +1,45 @@
 package com.sanajon.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sanajon.domain.User;
 import com.sanajon.service.UserManage;
 
 
 @Controller
-@RequestMapping("/user/user_query.do")
+@RequestMapping("/action/user")
 public class UserQueryController {
 
 	@Autowired
 	UserManage userManage;
 	
-	@SuppressWarnings("rawtypes")
-	@RequestMapping
-	public Map getByName(String username, ModelMap model)
+	private final String viewjsp = "/user/user_query.jsp";
+	
+	@RequestMapping("/name/{username}")
+	public String getByName(@PathVariable String username, Model model)
 	{
-		User user = userManage.getByName(username);
-		model.put("user", user);
-		return model;
+		model.addAttribute("user", userManage.getByName(username));
+		return viewjsp;
 	}
 
-	@SuppressWarnings("rawtypes")
-	@RequestMapping
-	public Map getById(@RequestParam("userid") int id, ModelMap model)
+	@RequestMapping("/id/{userid}")
+	public String getById(@PathVariable int userid, Model model)
 	{
-		User user = userManage.getById(id);
-		model.put("user", user);
-		return model;
+		model.addAttribute("user", userManage.getById(userid));
+		return viewjsp;
 	}
 	
-	@SuppressWarnings("rawtypes")
-	@RequestMapping(method = RequestMethod.GET, params = "get=all")
-	public Map getAllUser(ModelMap model)
+	@RequestMapping("/getall")
+	public String getAllUser(Model model)
 	{
 		List<User> users = userManage.getAllUsers();
-		model.put("users", users);
-		return model;
+		model.addAttribute("users", users);
+		return viewjsp;
 	}
 }

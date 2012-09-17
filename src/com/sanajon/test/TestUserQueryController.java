@@ -1,38 +1,32 @@
 package com.sanajon.test;
 
-import junit.framework.Assert;
+import static org.springframework.test.web.server.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.server.result.MockMvcResultMatchers.status;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
+import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.server.MockMvc;
+import org.springframework.test.web.server.setup.MockMvcBuilders;
 
 import com.sanajon.controller.UserQueryController;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:app-config.xml", "classpath:mvc-config.xml"})
-public class TestUserQueryController extends
-		AbstractTransactionalJUnit4SpringContextTests {
+public class TestUserQueryController {
 
-	@Autowired
-	private UserQueryController userQueryController;
+	private MockMvc mockMvc;
 	
-	@Autowired
-	private AnnotationMethodHandlerAdapter handlerAdapter;
+	@Before
+	public void setup() {
+		mockMvc = MockMvcBuilders.standaloneSetup(new UserQueryController()).build();
+	}
 	
-	private final MockHttpServletRequest request = new MockHttpServletRequest();
-	private final MockHttpServletResponse response = new MockHttpServletResponse();
-    
 	@Test
 	public void testGetAllUser() throws Exception {
-		request.setRequestURI("/user/user_query.do?get=all");
-		request.setMethod(HttpMethod.GET.name());
-
-		ModelAndView mav = handlerAdapter.handle(request, response, userQueryController);
-		Assert.assertEquals("/usr/user_query.jsp", mav.getView());
+		mockMvc.perform(get("/user/user_query.do"))
+				.andExpect(status().isOk());
 	}
 }
