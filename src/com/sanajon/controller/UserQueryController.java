@@ -3,6 +3,7 @@ package com.sanajon.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,27 +20,28 @@ public class UserQueryController {
 	@Autowired
 	UserManage userManage;
 	
-	private final String viewjsp = "user/user_query";
+	@Value("#{viewSettings['user.query.result']}")
+	private String view;
 	
 	@RequestMapping("/name/{username}")
 	public String getByName(@PathVariable String username, Model model)
 	{
 		model.addAttribute("user", userManage.getByName(username));
-		return viewjsp;
+		return view;
 	}
 
 	@RequestMapping("/id/{userid}")
 	public String getById(@PathVariable int userid, Model model)
 	{
 		model.addAttribute("user", userManage.getById(userid));
-		return viewjsp;
+		return view;
 	}
 	
-	@RequestMapping("/getall")
+	@RequestMapping("/all")
 	public String getAllUser(Model model)
 	{
 		List<User> users = userManage.getAllUsers();
 		model.addAttribute("users", users);
-		return viewjsp;
+		return view;
 	}
 }

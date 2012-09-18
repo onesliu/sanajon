@@ -27,7 +27,7 @@ public class TestUserQueryController {
 	@Test
 	@Transactional
 	public void testGetAllUser() throws Exception {
-		mockMvc.perform(get("/user/getall"))
+		mockMvc.perform(get("/user/all"))
 				.andExpect(status().isOk())
 				.andExpect(forwardedUrl("/WEB-INF/jsp/user/user_query.jsp"))
 				.andExpect(model().attributeExists("users"));
