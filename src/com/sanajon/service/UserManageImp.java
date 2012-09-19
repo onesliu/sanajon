@@ -2,16 +2,12 @@ package com.sanajon.service;
 
 import java.util.List;
 
-import javax.management.relation.Role;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sanajon.dao.UserDao;
-import com.sanajon.domain.Privilege;
 import com.sanajon.domain.User;
-import com.sanajon.domain.UserGroup;
 
 @Service
 @Transactional(readOnly=true)
@@ -23,48 +19,43 @@ public class UserManageImp implements UserManage {
 	@Override
 	@Transactional
 	public boolean addUser(User user) {
-		userDao.insertUser(user);
-		return true;
+		return userDao.insertUser(user);
 	}
 
 	@Override
 	@Transactional
 	public boolean deleteUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		return userDao.deleteUser(user);
 	}
 
 	@Override
 	@Transactional
 	public boolean disableUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		user.setDisabled(true);
+		return userDao.updateUser(user);
 	}
 
 	@Override
 	@Transactional
 	public boolean enableUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		user.setDisabled(false);
+		return userDao.updateUser(user);
 	}
 
 	@Override
 	@Transactional
 	public boolean modifyUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		return userDao.updateUser(user);
 	}
 
 	@Override
 	public User getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.getById(id);
 	}
 
 	@Override
 	public User getByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDao.getByName(name);
 	}
 
 	@Override
@@ -73,27 +64,23 @@ public class UserManageImp implements UserManage {
 	}
 
 	@Override
-	public List<User> getByGroup(UserGroup group) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getByGroup(int groupid) {
+		return userDao.getByGroup(groupid);
 	}
 
 	@Override
-	public List<User> getByKeyword(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getByKeyword(String word) {
+		return userDao.getByKeyword(word);
 	}
 
 	@Override
-	public List<User> getByPrivilege(Privilege privilege) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getByPrivilege(int privilegeid) {
+		return userDao.getByPrivilege(privilegeid);
 	}
 
 	@Override
-	public List<User> getByRole(Role role) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> getByRole(int roleid) {
+		return userDao.getByRole(roleid);
 	}
 
 }

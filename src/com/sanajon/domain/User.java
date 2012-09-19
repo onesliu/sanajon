@@ -2,15 +2,17 @@ package com.sanajon.domain;
 
 public class User {
 
-	private long id;
+	private int id;
 	private String name;
 	private String password;
-	private boolean disabled; 
+	private boolean disabled;
+	private int roleid;
+	private int groupid;
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -30,6 +32,18 @@ public class User {
 	}
 	public boolean getDisabled() {
 		return disabled;
+	}
+	public int getRoleid() {
+		return roleid;
+	}
+	public void setRoleid(int roleid) {
+		this.roleid = roleid;
+	}
+	public int getGroupid() {
+		return groupid;
+	}
+	public void setGroupid(int groupid) {
+		this.groupid = groupid;
 	}
 	
 	

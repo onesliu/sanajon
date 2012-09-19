@@ -4,10 +4,12 @@
 <mapper namespace="com.sanajon.dao.UserDao">
 	
 	<resultMap type="com.sanajon.domain.User" id="userMap">
-		<id property="id" column="id" javaType="long" jdbcType="BIGINT" />
+		<id property="id" column="id" />
 		<result property="name" column="name" />
 		<result property="password" column="password" />
 		<result property="disabled" column="disabled"/>
+		<result property="groupid" column="groupid" />
+		<result property="roleid" column="roleid" />
 	</resultMap>
 	
 	<insert id="insertUser" parameterType="com.sanajon.domain.User" 
@@ -32,5 +34,23 @@
 		select * from t_user where id=#{id}
 	</select>
 	
+	<select id="getByName" resultMap="userMap" parameterType="String">
+		select * from t_user where name = #{name}
+	</select>
+
+	<select id="getByGroup" resultMap="userMap" parameterType="int">
+		select * from t_user where groupid=#{groupid}
+	</select>
 	
+	<select id="getByRole" resultMap="userMap" parameterType="int">
+		select * from t_user where groupid=#{roleid}
+	</select>
+
+	<select id="getByKeyword" resultMap="userMap" parameterType="String">
+		select * from t_user where name like '%#{word}%'
+	</select>
+
+	<select id="getByPrivilege" resultMap="userMap" parameterType="int">
+		select u.* from t_user u, t_user_privilege p where p.privilegeid=#{privilegeid} and p.userid=u.id;
+	</select>
 </mapper>

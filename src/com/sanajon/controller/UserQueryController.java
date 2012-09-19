@@ -1,7 +1,5 @@
 package com.sanajon.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -9,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sanajon.domain.User;
 import com.sanajon.service.UserManage;
 
 
@@ -37,11 +34,38 @@ public class UserQueryController {
 		return view;
 	}
 	
+	@RequestMapping("/role/{roleid}")
+	public String getByRoleId(@PathVariable int roleid, Model model)
+	{
+		model.addAttribute("users", userManage.getByRole(roleid));
+		return view;
+	}
+
+	@RequestMapping("/group/{groupid}")
+	public String getByGroupId(@PathVariable int groupid, Model model)
+	{
+		model.addAttribute("users", userManage.getByGroup(groupid));
+		return view;
+	}
+
+	@RequestMapping("/privilege/{prid}")
+	public String getByPrivilegeId(@PathVariable int prid, Model model)
+	{
+		model.addAttribute("users", userManage.getByPrivilege(prid));
+		return view;
+	}
+
 	@RequestMapping("/all")
 	public String getAllUser(Model model)
 	{
-		List<User> users = userManage.getAllUsers();
-		model.addAttribute("users", users);
+		model.addAttribute("users", userManage.getAllUsers());
+		return view;
+	}
+	
+	@RequestMapping("/keyword/{word}")
+	public String getByKeyword(@PathVariable String word, Model model)
+	{
+		model.addAttribute("users", userManage.getByKeyword(word));
 		return view;
 	}
 }

@@ -2,11 +2,7 @@ package com.sanajon.dao;
 
 import java.util.List;
 
-import javax.management.relation.Role;
-
-import com.sanajon.domain.Privilege;
 import com.sanajon.domain.User;
-import com.sanajon.domain.UserGroup;
 
 public interface UserDao {
 
@@ -18,9 +14,9 @@ public interface UserDao {
 	public User getByName(String name);
 
 	public List<User> getAllUsers();
-	public List<User> getByGroup(UserGroup group);
-	public List<User> getByKeyword(String name);
-	public List<User> getByPrivilege(Privilege privilege);
-	public List<User> getByRole(Role role);
+	public List<User> getByGroup(int groupid);
+	public List<User> getByPrivilege(int privilegeid);
+	public List<User> getByRole(int roleid);
 
+	public List<User> getByKeyword(String word);
 }
