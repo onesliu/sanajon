@@ -31,14 +31,14 @@ public class UserManageImp implements UserManage {
 	@Override
 	@Transactional
 	public boolean disableUser(User user) {
-		user.setDisabled(true);
+		user.setDisabled(1);
 		return userDao.updateUser(user);
 	}
 
 	@Override
 	@Transactional
 	public boolean enableUser(User user) {
-		user.setDisabled(false);
+		user.setDisabled(0);
 		return userDao.updateUser(user);
 	}
 

@@ -5,7 +5,7 @@ public class User {
 	private int id;
 	private String name;
 	private String password;
-	private boolean disabled;
+	private int disabled;
 	private int roleid;
 	private int groupid;
 	
@@ -27,10 +27,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public void setDisabled(boolean disabled) {
+	public void setDisabled(int disabled) {
 		this.disabled = disabled;
 	}
-	public boolean getDisabled() {
+	public int getDisabled() {
 		return disabled;
 	}
 	public int getRoleid() {

@@ -22,27 +22,27 @@ public class UserEditController {
 	@Value("#{viewSettings['user.edit.result']}")
 	private String view;
 
-	@RequestMapping(value="/editor", method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST)
 	public String addUser(@RequestParam String username, @RequestParam String passwd, Model model)
 	{
 		User user = new User();
 		user.setName(username);
 		user.setPassword(passwd);
-		user.setDisabled(false);
+		user.setDisabled(0);
 		boolean ret = userManage.addUser(user);
 		model.addAttribute("result", ret);
 		
 		return view;
 	}
 
-	@RequestMapping(value="/editor/{userid}", method=RequestMethod.POST)
+	@RequestMapping(value="/{userid}", method=RequestMethod.PUT)
 	public String editUser(@PathVariable int userid,
 			@RequestParam String username, @RequestParam String passwd, Model model)
 	{
 		return view;
 	}
 	
-	@RequestMapping(value="/editor/{userid}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/{userid}", method=RequestMethod.DELETE)
 	public String delUser(@PathVariable int userid, Model model)
 	{
 		return view;

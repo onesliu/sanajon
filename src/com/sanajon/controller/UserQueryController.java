@@ -55,7 +55,7 @@ public class UserQueryController {
 		return view;
 	}
 
-	@RequestMapping("/all")
+	@RequestMapping
 	public String getAllUser(Model model)
 	{
 		model.addAttribute("users", userManage.getAllUsers());

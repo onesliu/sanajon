@@ -15,18 +15,20 @@ create table t_user (
 	password varchar(256),
 	roleid integer,
 	groupid integer,
-	disabled boolean default false
+	disabled integer default 0
 );
 
 create table t_group (
 	id serial not null primary key,
 	parentid integer not null default 0,
-	groupname varchar(256)
+	groupname varchar(256),
+	disabled integer default 0
 );
 
 create table t_role (
 	id serial not null primary key,
-	rolename varchar(256) not null
+	rolename varchar(256) not null,
+	disabled integer default 0
 );
 
 create table t_privilege (

@@ -2,7 +2,7 @@ package com.sanajon.test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasProperty;
-import static org.springframework.test.web.server.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.server.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.server.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.server.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.server.result.MockMvcResultMatchers.status;
@@ -18,19 +18,19 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.web.server.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sanajon.dao.UserDao;
 import com.sanajon.domain.User;
-import com.sanajon.service.UserManage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:app-config.xml","classpath:mvc-config.xml"})
-@TransactionConfiguration(transactionManager="transactionManager")
+@TransactionConfiguration
 @Transactional
 public class TestUserQueryController {
 
 	private MockMvc mockMvc;
 	
 	@Autowired
-	private UserManage userManage;
+	private UserDao userDao;
 	
 	@Before
 	public void setup() {
@@ -39,7 +39,7 @@ public class TestUserQueryController {
 	
 	@Test
 	public void testGetAllUser() throws Exception {
-		mockMvc.perform(get("/user/all"))
+		mockMvc.perform(get("/user"))
 				.andExpect(status().isOk())
 				.andExpect(forwardedUrl("/WEB-INF/jsp/user/user_query.jsp"))
 				.andExpect(model().attributeExists("users"));
@@ -47,20 +47,22 @@ public class TestUserQueryController {
 	
 	@Test
 	public void testGetbyName() throws Exception {
-		User user = new User();
+		mockMvc.perform(post("/user", "username=testuser", "password=testpwd"))
+			.andExpect(status().isOk());
+/*		User user = new User();
 		user.setName("testuser");
 		user.setPassword("testpwd");
-		user.setDisabled(true);
+		user.setDisabled(1);
 		user.setGroupid(15);
 		user.setRoleid(5);
-		userManage.addUser(user);
-		mockMvc.perform(get("/user/name/testuser"))
+		userDao.insertUser(user);
+*/		mockMvc.perform(get("/user/name/testuser"))
 			.andExpect(status().isOk())
 			.andExpect(forwardedUrl("/WEB-INF/jsp/user/user_query.jsp"))
 			.andExpect(model().attributeExists("user"))
 			.andExpect(model().attribute("user", hasProperty("name", equalTo("testuser"))))
 			.andExpect(model().attribute("user", hasProperty("password", equalTo("testpwd"))))
-			.andExpect(model().attribute("user", hasProperty("diabled", equalTo(true))))
+			.andExpect(model().attribute("user", hasProperty("diabled", equalTo(1))))
 			.andExpect(model().attribute("user", hasProperty("groupid", equalTo(15))))
 			.andExpect(model().attribute("user", hasProperty("roleid", equalTo(5))));
 	}
