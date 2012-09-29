@@ -23,7 +23,7 @@ import com.sanajon.domain.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:app-config.xml","classpath:mvc-config.xml"})
-@TransactionConfiguration
+@TransactionConfiguration(defaultRollback=true)
 @Transactional
 public class TestUserQueryController {
 
@@ -31,6 +31,8 @@ public class TestUserQueryController {
 	
 	@Autowired
 	private UserDao userDao;
+	
+	User user = new User();
 	
 	@Before
 	public void setup() {
@@ -47,16 +49,13 @@ public class TestUserQueryController {
 	
 	@Test
 	public void testGetbyName() throws Exception {
-		mockMvc.perform(post("/user", "username=testuser", "password=testpwd"))
-			.andExpect(status().isOk());
-/*		User user = new User();
 		user.setName("testuser");
 		user.setPassword("testpwd");
-		user.setDisabled(1);
+		user.setDisabled(true);
 		user.setGroupid(15);
 		user.setRoleid(5);
 		userDao.insertUser(user);
-*/		mockMvc.perform(get("/user/name/testuser"))
+		mockMvc.perform(get("/user/name/testuser"))
 			.andExpect(status().isOk())
 			.andExpect(forwardedUrl("/WEB-INF/jsp/user/user_query.jsp"))
 			.andExpect(model().attributeExists("user"))

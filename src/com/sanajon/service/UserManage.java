@@ -6,11 +6,11 @@ import com.sanajon.domain.User;
 
 public interface UserManage {
 
-	public boolean addUser(User user);
-	public boolean deleteUser(User user);
-	public boolean disableUser(User user);
-	public boolean enableUser(User user);
-	public boolean modifyUser(User user);
+	public void addUser(User user);
+	public void deleteUser(User user);
+	public void disableUser(User user);
+	public void enableUser(User user);
+	public void modifyUser(User user);
 
 	public User getById(int id);
 	public User getByName(String name);

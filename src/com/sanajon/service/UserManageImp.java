@@ -18,34 +18,34 @@ public class UserManageImp implements UserManage {
 	
 	@Override
 	@Transactional
-	public boolean addUser(User user) {
-		return userDao.insertUser(user);
+	public void addUser(User user) {
+		userDao.insertUser(user);
 	}
 
 	@Override
 	@Transactional
-	public boolean deleteUser(User user) {
-		return userDao.deleteUser(user);
+	public void deleteUser(User user) {
+		userDao.deleteUser(user);
 	}
 
 	@Override
 	@Transactional
-	public boolean disableUser(User user) {
-		user.setDisabled(1);
-		return userDao.updateUser(user);
+	public void disableUser(User user) {
+		user.setDisabled(true);
+		userDao.updateUser(user);
 	}
 
 	@Override
 	@Transactional
-	public boolean enableUser(User user) {
-		user.setDisabled(0);
-		return userDao.updateUser(user);
+	public void enableUser(User user) {
+		user.setDisabled(false);
+		userDao.updateUser(user);
 	}
 
 	@Override
 	@Transactional
-	public boolean modifyUser(User user) {
-		return userDao.updateUser(user);
+	public void modifyUser(User user) {
+		userDao.updateUser(user);
 	}
 
 	@Override

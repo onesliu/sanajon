@@ -6,9 +6,9 @@ import com.sanajon.domain.User;
 
 public interface UserDao {
 
-	public boolean insertUser(User user);
-	public boolean deleteUser(User user);
-	public boolean updateUser(User user);
+	public void insertUser(User user);
+	public void deleteUser(User user);
+	public void updateUser(User user);
 
 	public User getById(int id);
 	public User getByName(String name);

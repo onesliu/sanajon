@@ -14,12 +14,13 @@
 	
 	<insert id="insertUser" parameterType="com.sanajon.domain.User" 
 		useGeneratedKeys="true" keyProperty="id">
-		insert into t_user(name,password,disabled) values(#{name},#{password},#{disabled})
+		insert into t_user(name,password,disabled,roleid,groupid)
+		values(#{name},#{password},#{disabled},#{roleid},#{groupid})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.sanajon.domain.User">
-		update t_user set name=#{name}, passowrd=#{password}, disabled=#{disabled}
-		where id=#{id}
+		update t_user set name=#{name}, passowrd=#{password}, disabled=#{disabled},
+		roleid=#{roleid}, groupid=#{groupid} where id=#{id}
 	</update>
 	
 	<delete id="deleteUser" parameterType="com.sanajon.domain.User">

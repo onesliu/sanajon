@@ -28,9 +28,9 @@ public class UserEditController {
 		User user = new User();
 		user.setName(username);
 		user.setPassword(passwd);
-		user.setDisabled(0);
-		boolean ret = userManage.addUser(user);
-		model.addAttribute("result", ret);
+		user.setDisabled(false);
+		userManage.addUser(user);
+		model.addAttribute("result", true);
 		
 		return view;
 	}
