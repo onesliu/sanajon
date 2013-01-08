@@ -23,6 +23,7 @@ public class UserQueryController {
 	@RequestMapping("/name/{username}")
 	public String getByName(@PathVariable String username, Model model)
 	{
+		System.out.println(userManage.getByName(username));
 		model.addAttribute("user", userManage.getByName(username));
 		return view;
 	}
